@@ -18,12 +18,13 @@ from utils.keyBindings import keyBinds
 from gui.heading import headingWidget
 from gui.tabs import tabsWidget
 
+
 WINDOW_NAME = 'Xtreme Password Manager'
 HEIGHT = 612
 WIDTH = 625
 GEOMETRY = f"{HEIGHT}x{WIDTH}"
-RESIZEABLE_WIDTH = False
-RESIZEABLE_HEIGHT = False
+RESIZEABLE_WIDTH = True
+RESIZEABLE_HEIGHT = True
 
 
 
