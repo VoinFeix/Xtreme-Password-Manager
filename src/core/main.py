@@ -23,8 +23,8 @@ WINDOW_NAME = 'Xtreme Password Manager'
 HEIGHT = 612
 WIDTH = 625
 GEOMETRY = f"{HEIGHT}x{WIDTH}"
-RESIZEABLE_WIDTH = True
-RESIZEABLE_HEIGHT = True
+RESIZEABLE_WIDTH = False
+RESIZEABLE_HEIGHT = False
 
 
 
@@ -44,8 +44,6 @@ class XPM(ctk.CTk):
         headingWidget(self)
 
         tabsWidget(self)
-
-
         
         keyBinds(self)
 

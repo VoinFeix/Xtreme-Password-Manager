@@ -1,9 +1,8 @@
 import customtkinter as ctk
-from themes.themes import default_font
+from themes.themes import default_font, PADXY, titles_font, passwordStrengthColors, copyPasswordColor
 from utils.genPassword import genPassword
 from utils.copyPassword import copyPassword
 # from utils.keyBindings import generateTabBinding
-PADXY = 12
 
 
 def generateTabWidgets(self, master):
@@ -50,8 +49,9 @@ def generateTabWidgets(self, master):
     self.passwordResultTextBox.grid(row=0, column=0, padx=PADXY, pady=PADXY)
     self.passwordResultTextBox.configure(state='disabled')
 
-    self.copyStatusLabel = ctk.CTkLabel(self.resultPassFrame, text='', font=default_font)
-    self.copyStatusLabel.grid(row=1, column=0, padx=PADXY, pady=PADXY)
+    self.statusLabel = ctk.CTkLabel(self.resultPassFrame, text='', font=titles_font)
+    self.statusLabel.grid(row=1, column=0, padx=PADXY, pady=PADXY)
+    
     
     
 
@@ -71,12 +71,22 @@ def generateTabWidgets(self, master):
 def testSliderEvent(event):
     print(f"Slider Value: {event}")
 
-def charSliderEvent(self, event):
+def charSliderEvent(self, event) -> None:
     # testSliderEvent(event)
 
     currentCharValue = int(self.charSlider.get())
     charSliderLabelText = f'{currentCharValue} Characters'
     self.charSliderLabel.configure(text=charSliderLabelText)
+    # self.passwordStrengthEvent(currentCharValue)
+
+def passwordStrengthEvent(self, passLength:int) -> None:
+    self.clearStatus_func()
+    if passLength <= 9:
+        self.statusLabel.configure(text='💀 Vulnerable', text_color=passwordStrengthColors['Vulnerable'])
+    elif 9 < passLength <= 16:
+        self.statusLabel.configure(text='⚠️ Weak', text_color=passwordStrengthColors['Weak'])
+    elif 16 < passLength <= 64:
+        self.statusLabel.configure(text='💪 Strong', text_color=passwordStrengthColors['Strong'])
 
 def advanchedOption_func(self):
     try:
@@ -95,7 +105,7 @@ def advanchedOption_func(self):
     self.includeNumbersCheckBox = ctk.CTkCheckBox(self.generateTabFrame, text='Include numbers (0-9)   ', variable=self.includeNumbers_check_value, command=None, font=default_font)
     self.includeNumbersCheckBox.grid(row=4, column=0, padx=PADXY, pady=PADXY)
 
-def genPass_func(self):
+def genPass_func(self) -> None:
     length = 0
     specialChars = None
     captialLetters = None
@@ -118,13 +128,14 @@ def genPass_func(self):
     # output = f'Result: {randomPassword}'
     self.passwordResultTextBox.insert('end', randomPassword)
     self.passwordResultTextBox.configure(state='disabled')
+    self.passwordStrengthEvent(length)
 
-def clearCopyStatus_func(self):
-    self.copyStatusLabel.configure(text='')
+def clearStatus_func(self) -> None:
+    self.statusLabel.configure(text='')
 
-def copyPass_func(self):
+def copyPass_func(self) -> None:
     randomPass = self.passwordResultTextBox.get('0.0', 'end') if self.passwordResultTextBox.get('0.0', 'end') else ''
     copyPassword(self, randomPass)
-    self.copyStatusLabel.configure(text='Status: Password Copied!!')
-    self.after(5000, self.clearCopyStatus_func)
+    self.statusLabel.configure(text='Status: Password Copied!!', text_color=copyPasswordColor)
+    self.after(5000, self.clearStatus_func)
 

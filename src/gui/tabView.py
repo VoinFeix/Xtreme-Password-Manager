@@ -1,7 +1,11 @@
 import customtkinter as ctk
 from themes.themes import default_font
-from .generateTab import generateTabWidgets
-from .generateTab import charSliderEvent, advanchedOption_func, genPass_func, copyPass_func, clearCopyStatus_func
+from .generateTab import generateTabWidgets, passwordStrengthEvent
+from .generateTab import charSliderEvent, advanchedOption_func, genPass_func, copyPass_func, clearStatus_func, passwordStrengthEvent
+from .loginTab import loginTabWidgets
+from .settingsTab import settingsTabWidget, setTheme_func
+from .savedTab import savedTabWidgets
+from .aboutTab import aboutTabWidgets
 # from utils.keyBindings import generateTabBinding
 
 class TabView(ctk.CTkTabview):
@@ -11,16 +15,16 @@ class TabView(ctk.CTkTabview):
         self.add('Generate')
         self.add('Login')
         self.add('Saved')
-        self.add('About')
         self.add('Settings')
+        self.add('About')
 
         generateTabWidgets(self, master=self.tab('Generate'))
-        self.loginTabWidgets(self.tab('Login'))
-        self.savedTabWidgets(self.tab('Saved'))
-        self.aboutTabWidgets(self.tab('About'))
-        self.settingsTabWidgets(self.tab('Settings'))
-        
+        loginTabWidgets(self, master=self.tab('Login'))
+        savedTabWidgets(self, master=self.tab('Saved'))
+        settingsTabWidget(self, master=self.tab('Settings'))
+        aboutTabWidgets(self, master=self.tab('About'))        
         # generateTabBinding(self.tab('Generate'))
+    
 
     def charSliderEvent(self, *args):
         charSliderEvent(self, *args)
@@ -34,16 +38,15 @@ class TabView(ctk.CTkTabview):
     def copyPass_func(self):
         copyPass_func(self)
     
-    def clearCopyStatus_func(self):
-        clearCopyStatus_func(self)
+    def clearStatus_func(self):
+        clearStatus_func(self)
+    
+    def passwordStrengthEvent(self, *args):
+        passwordStrengthEvent(self, *args)
+    
+    def setTheme_func(self, *args, **kwargs):
+        setTheme_func(self, *args, **kwargs)
 
-
-    def loginTabWidgets(self, master):
-        self.loginTabFrame = ctk.CTkFrame(master, border_color='black', border_width=3)
-        self.loginTabFrame.grid(row=0, column=0, padx=20, pady=20, sticky='ew')
-
-        self.loginHeading = ctk.CTkLabel(self.loginTabFrame, text='Hello LoginTab', font=default_font)
-        self.loginHeading.grid(row=0, column=0, padx=20, pady=20, sticky='ew')
 
     def savedTabWidgets(self, master):
         self.savedTabFrame = ctk.CTkFrame(master, border_color='black', border_width=3)
