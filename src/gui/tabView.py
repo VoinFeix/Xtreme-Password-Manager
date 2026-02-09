@@ -2,7 +2,7 @@ import customtkinter as ctk
 from themes.themes import default_font
 from .generateTab import generateTabWidgets, passwordStrengthEvent
 from .generateTab import charSliderEvent, advanchedOption_func, genPass_func, copyPass_func, clearStatus_func, passwordStrengthEvent
-from .loginTab import loginTabWidgets
+from .loginTab import loginTabWidgets, saveData, clearEntries
 from .settingsTab import settingsTabWidget, setTheme_func
 from .savedTab import savedTabWidgets
 from .aboutTab import aboutTabWidgets
@@ -26,26 +26,23 @@ class TabView(ctk.CTkTabview):
         # generateTabBinding(self.tab('Generate'))
     
 
-    def charSliderEvent(self, *args):
-        charSliderEvent(self, *args)
+    def charSliderEvent(self, *args): charSliderEvent(self, *args)
     
-    def genPass_func(self,):
-        genPass_func(self)
+    def genPass_func(self,): genPass_func(self)
 
-    def advanchedOption_func(self):
-        advanchedOption_func(self)
+    def advanchedOption_func(self): advanchedOption_func(self)
 
-    def copyPass_func(self):
-        copyPass_func(self)
+    def copyPass_func(self): copyPass_func(self)
     
-    def clearStatus_func(self):
-        clearStatus_func(self)
+    def clearStatus_func(self): clearStatus_func(self)
     
-    def passwordStrengthEvent(self, *args):
-        passwordStrengthEvent(self, *args)
+    def passwordStrengthEvent(self, *args): passwordStrengthEvent(self, *args)
     
-    def setTheme_func(self, *args, **kwargs):
-        setTheme_func(self, *args, **kwargs)
+    def setTheme_func(self, *args, **kwargs): setTheme_func(self, *args, **kwargs)
+
+    def saveData(self): saveData(self)
+
+    def clearEntries(self): clearEntries(self)
 
 
     def savedTabWidgets(self, master):

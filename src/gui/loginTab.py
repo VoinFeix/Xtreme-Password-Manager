@@ -1,5 +1,6 @@
 import customtkinter as ctk
 from themes.themes import default_font, PADXY, titles_font
+from utils.saveCreds import SaveCredentials, addData, init
 
 def loginTabWidgets(self, master):
     self.loginTabFrame = ctk.CTkFrame(master, border_color='black', border_width=3)
@@ -12,7 +13,7 @@ def loginTabWidgets(self, master):
     self.titleEntry.grid(row=0, column=1, padx=PADXY, pady=PADXY)
     self.titleEntry.bind("<KeyRelease>", lambda _: otherEntriesOnClick(self))
     # self.titleEntry.insert('end', 'Untitled')
-
+    
 
     self.detailsFrame = ctk.CTkFrame(master, border_color='black', border_width=3)
     self.detailsFrame.grid(row=1, column=0, padx=PADXY, pady=PADXY)
@@ -66,7 +67,7 @@ def loginTabWidgets(self, master):
     self.createButton = ctk.CTkFrame(master, border_color='black', border_width=3)
     self.createButton.grid(row=4, column=0, padx=PADXY, pady=PADXY)
 
-    self.createButton = ctk.CTkButton(self.createButton, text='Create', command=None, font=default_font)
+    self.createButton = ctk.CTkButton(self.createButton, text='Create', command=self.saveData, font=default_font)
     self.createButton.grid(row=0, column=0, padx=PADXY, pady=PADXY)
 
 def hidePassword(self):
@@ -77,3 +78,41 @@ def showPassword(self):
 
 def otherEntriesOnClick(self):
     hidePassword(self)
+
+def clearEntries(self):
+    idx=0
+    end='end'
+    self.titleEntry.delete(idx, end)
+    self.usernameOrEmailEntry.delete(idx, end)
+    self.passwordEntry.delete(idx, end)
+    self.twoFASecretKeyEntry.delete(idx, end)
+    self.websiteEntry.delete(idx, end)
+    self.noteEntry.delete(idx, end)
+
+
+filepath, key = init()
+sc = SaveCredentials(filepath, key)
+
+def saveData(self):
+    self.title = self.titleEntry.get().strip()
+    if not self.title or self.title in sc.get():
+        print('Already found')
+        return 
+
+        
+    self.usernameOremail = self.usernameOrEmailEntry.get().strip()
+    self.password = self.passwordEntry.get()
+    self.twoFASecretKey = self.twoFASecretKeyEntry.get().strip()
+    self.website = self.websiteEntry.get().strip()
+    self.note = self.noteEntry.get()
+    data = addData(
+        title=self.title,
+        usernameOremail=self.usernameOremail,
+        password=self.password,
+        twoFASecretKey=self.twoFASecretKey,
+        website=self.website,
+        note=self.note
+    )
+
+    sc.add(data)
+    self.clearEntries()
