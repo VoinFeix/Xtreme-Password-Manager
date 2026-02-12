@@ -44,7 +44,7 @@ class XPM(ctk.CTk):
         headingWidget(self)
 
         tabsWidget(self)
-        
+
         keyBinds(self)
 
 

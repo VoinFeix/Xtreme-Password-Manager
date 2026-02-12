@@ -67,7 +67,7 @@ Note:   {self.note if self.note else 'N/A'}
 
         text_color = None
        
-        if 20 <= curSec and curSec <= 40: text_color=timerLabelColors['Middle']
+        if 20 <= curSec or curSec <= 40: text_color=timerLabelColors['Middle']
         if curSec > 40: text_color=timerLabelColors['High']
         if curSec <=10: text_color=timerLabelColors['Low']
 

@@ -4,7 +4,7 @@ from .generateTab import generateTabWidgets, passwordStrengthEvent
 from .generateTab import charSliderEvent, advanchedOption_func, genPass_func, copyPass_func, clearStatus_func, passwordStrengthEvent
 from .loginTab import loginTabWidgets, saveData, clearEntries, showMessage
 from .settingsTab import settingsTabWidget, setTheme_func
-from .savedTab import savedTabWidgets, addDataList
+from .savedTab import savedTabWidgets, addDataList, deleteEntry
 from .aboutTab import aboutTabWidgets
 # from utils.keyBindings import generateTabBinding
 
@@ -47,6 +47,8 @@ class TabView(ctk.CTkTabview):
     def showMessage(self): showMessage(self)
 
     def addDataList(self): addDataList(self)
+
+    def deleteEntry(self): deleteEntry(self)
 
 
     def savedTabWidgets(self, master):
