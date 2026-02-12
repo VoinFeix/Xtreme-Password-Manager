@@ -1,6 +1,7 @@
 import customtkinter as ctk
 from themes.themes import default_font, PADXY, titles_font
 from utils.saveCreds import SaveCredentials, addData, init
+from CTkMessagebox import CTkMessagebox
 
 def loginTabWidgets(self, master):
     self.loginTabFrame = ctk.CTkFrame(master, border_color='black', border_width=3)
@@ -64,11 +65,14 @@ def loginTabWidgets(self, master):
     self.noteEntry.bind("<KeyRelease>", lambda _: otherEntriesOnClick(self))
 
 
-    self.createButton = ctk.CTkFrame(master, border_color='black', border_width=3)
-    self.createButton.grid(row=4, column=0, padx=PADXY, pady=PADXY)
+    self.createButtonFrame = ctk.CTkFrame(master, border_color='black', border_width=3)
+    self.createButtonFrame.grid(row=4, column=0, padx=PADXY, pady=PADXY)
 
-    self.createButton = ctk.CTkButton(self.createButton, text='Create', command=self.saveData, font=default_font)
+    self.createButton = ctk.CTkButton(self.createButtonFrame, text='Create', command=self.saveData, font=default_font)
     self.createButton.grid(row=0, column=0, padx=PADXY, pady=PADXY)
+
+    self.clearButton = ctk.CTkButton(self.createButtonFrame, text='Clear', command=self.clearEntries, font=default_font)
+    self.clearButton.grid(row=0, column=1, padx=PADXY, pady=PADXY)
 
 def hidePassword(self):
     self.passwordEntry.configure(show='*')
@@ -93,12 +97,24 @@ def clearEntries(self):
 filepath, key = init()
 sc = SaveCredentials(filepath, key)
 
+def showMessage(self, msgtype:str='info', message:str=''):
+    if msgtype.lower() == "info": 
+        CTkMessagebox(title="Info", message=message, option_1="Ok")
+
+    if msgtype.lower() == 'warning':
+        CTkMessagebox(title='Warning', message=message, option_1="Ok")
+
+
 def saveData(self):
     self.title = self.titleEntry.get().strip()
-    if not self.title or self.title in sc.get():
-        print('Already found')
+    if not self.title:
+        msg = "Title Can't Be Empty"
+        showMessage(self, msgtype='warning', message=msg)
         return 
-
+    elif self.title in sc.get():
+        msg = f"{self.title} Already Exists"
+        showMessage(self, msgtype='warning', message=msg)
+        return
         
     self.usernameOremail = self.usernameOrEmailEntry.get().strip()
     self.password = self.passwordEntry.get()
@@ -115,4 +131,7 @@ def saveData(self):
     )
 
     sc.add(data)
+    msg = "Login Created Successfully"
+    showMessage(self, msgtype='info', message=msg)
     self.clearEntries()
+    self.addDataList()

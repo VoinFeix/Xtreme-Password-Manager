@@ -64,4 +64,6 @@ def init():
 # filepath, key = init()
 # sc = SaveCredentials(filepath, key)
 
-# print(sc.get())
+# # print(sc.get().keys())
+
+# print(sc.get()['One Fake One'])

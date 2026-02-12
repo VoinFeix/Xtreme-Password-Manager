@@ -2,9 +2,9 @@ import customtkinter as ctk
 from themes.themes import default_font
 from .generateTab import generateTabWidgets, passwordStrengthEvent
 from .generateTab import charSliderEvent, advanchedOption_func, genPass_func, copyPass_func, clearStatus_func, passwordStrengthEvent
-from .loginTab import loginTabWidgets, saveData, clearEntries
+from .loginTab import loginTabWidgets, saveData, clearEntries, showMessage
 from .settingsTab import settingsTabWidget, setTheme_func
-from .savedTab import savedTabWidgets
+from .savedTab import savedTabWidgets, addDataList
 from .aboutTab import aboutTabWidgets
 # from utils.keyBindings import generateTabBinding
 
@@ -43,6 +43,10 @@ class TabView(ctk.CTkTabview):
     def saveData(self): saveData(self)
 
     def clearEntries(self): clearEntries(self)
+
+    def showMessage(self): showMessage(self)
+
+    def addDataList(self): addDataList(self)
 
 
     def savedTabWidgets(self, master):

@@ -2,6 +2,8 @@
 heading_font = ("Cascadia Code", 30, "bold")
 default_font = ("Cascadia Code", 15)
 titles_font = ("Cascadia Code", 25)
+showInfo_font = ("Cascadia Code", 20)
+showTimer_font = ("Cascadia Code", 18)
 
 passwordStrengthColors = {
     'Vulnerable': 'red',
@@ -36,3 +38,9 @@ savedTabListBoxFont = ("Cascadia Code", 20)
 DEFAULT_APPEARANCE_MODE = 'dark'
 DEFAULT_THEME = available_themes['marsh']
 PADXY = 10
+
+timerLabelColors = {
+    'High': 'green',
+    'Middle': 'yellow',
+    'Low': 'red',
+}
