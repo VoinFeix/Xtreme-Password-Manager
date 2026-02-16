@@ -80,8 +80,7 @@ XPM/
 
 ## Requirements
 - Python 3.8+
-- Custom Tkinter    (Pip package)
-- Cryptography      (Pip package)
+- Some Pip Packages
 
 ## Installation
 1. AppImage
