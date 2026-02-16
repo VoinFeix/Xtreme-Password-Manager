@@ -1,4 +1,3 @@
-
 # XPM: Xtreme Password Manager
 XPM: Xtreme Password Manager is a lightweight, secured, encrypted, and easy to use password manager build for linux based systems.
 
@@ -75,7 +74,7 @@ XPM/
 <img alt="about" src="/ScreenShots/about.png" />
 
 ### Demo
-[![Watch the video](/Demos/xpm.mp4)]
+
 
 
 ## Requirements
