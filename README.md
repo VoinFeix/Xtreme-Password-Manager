@@ -10,35 +10,69 @@ XPM: Xtreme Password Manager is a lightweight, secured, encrypted, and easy to u
 - Access saved logins with a easy UI.
 - User can delete unused login very easily with one button.
 - Switch between themes easily with one click.
+- Supports multiple themes
+- Light weight setup and easy on cpu.
 - Overall ui is easy to use and begineer friendly.
 - Fully offline mode.
 - Your data never leaves your computer.
 
 
 ## Project Structure
-XPM:
-    -> src:
-        -> core         (Contians the main.py file)
-        -> gui          (Contians the files for gui elements)
-        -> themes       (Contians the files for themes)
-        -> utils        (Contains Neccesary utility files)
+```
+XPM/
+│
+├── README.md
+├── LICENSE
+├── requirements.txt
+├── .gitignore
+│
+├── ScreenShots/                # Contains all the screenshots of the project
+│
+└── src/
+   ├── core/
+   │   └── main.py              # Main file that launches the project 
+   │
+   ├── gui/
+   │   ├── aboutTab.py          # Gui elements for About Tab
+   │   ├── generateTab          # Gui elements for Generate Tab
+   │   ├── heading.py           # Gui elements for the headings
+   │   ├── loginTab.py          # Gui elements for Login Tab
+   │   ├── popUpUi.py           # Gui elements for Pop Up
+   │   ├── savedTab.py          # Gui elements for Saved Tab
+   │   ├── settingsTab.py       # Gui elements for Settings Tab
+   │   └── tabView.py           # Main Tab View
+   │
+   ├── themes/
+   │   ├── themes.py            # All Neccesary variables and information
+   │   └── *.json               # All json themes files       
+   │
+   └── utils/
+      ├── copyPassword.py       # Function for Copying Password
+      ├── saveCreds.py          # Contains the code for storing user credentials securely
+      ├── genPassword.py        # Function for generating the random password
+      └── keyBindings.py        # Function containing all keybinds for the program
+      
 
+```
 
 ## ScreenShots and Demo
+- All Screenshots below have the default theme, but user can change it to their favourite theme.
+
 1. Generate Password Tab
-<PIC>
+
+<img width="550" height="600" alt="generate_password" src="/ScreenShots/genPass.png" />
 
 2. Create Login Tab
-<PIC>
+<img width="550" height="600" alt="login_password" src="/ScreenShots/loginPass.png" />
 
 3. Saved Logins
-<PIC>
+<img width="550" height="600" alt="saved_logins" src="/ScreenShots/savedLogins.png" />
 
 4. Settings Tab
-<PIC>
+<img width="550" height="600" alt="settings" src="/ScreenShots/settings.png" />
 
 5. About Tab
-<PIC>
+<img width="550" height="600" alt="about" src="/ScreenShots/about.png" />
 
 ### Demo
 <DEMO.gif>
@@ -51,10 +85,30 @@ XPM:
 
 ## Installation
 1. AppImage
-<APPIMAGE>
+    - Under Development :)
 
 2. Source Code
-<SOURCE CODE>
+    - Clone The Repository
+    ```bash
+    git clone https://github.com/VoinFeix/Xtreme-Password-Manager.git
+    cd Xtreme-Password-Manager
+    ```
+
+    - Create An Virtual Env (Recommended)
+    ```bash
+    python3 -m venv venv/
+    source venv/bin/activate
+    ```
+
+    - Install The Requirements
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+    - Run The Application
+    ```bash
+    python3 src/core/main.py
+    ```
 
 ---
 
