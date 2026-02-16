@@ -75,7 +75,7 @@ XPM/
 <img alt="about" src="/ScreenShots/about.png" />
 
 ### Demo
-<DEMO.gif>
+[![Watch the video](/Demos/xpm.mp4)]
 
 
 ## Requirements
