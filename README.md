@@ -60,19 +60,19 @@ XPM/
 
 1. Generate Password Tab
 
-<img width="550" height="600" alt="generate_password" src="/ScreenShots/genPass.png" />
+<img alt="generate_password" src="/ScreenShots/genPass.png" />
 
 2. Create Login Tab
-<img width="550" height="600" alt="login_password" src="/ScreenShots/loginPass.png" />
+<img alt="login_password" src="/ScreenShots/loginPass.png" />
 
 3. Saved Logins
-<img width="550" height="600" alt="saved_logins" src="/ScreenShots/savedLogins.png" />
+<img alt="saved_logins" src="/ScreenShots/savedLogins.png" />
 
 4. Settings Tab
-<img width="550" height="600" alt="settings" src="/ScreenShots/settings.png" />
+<img alt="settings" src="/ScreenShots/settings.png" />
 
 5. About Tab
-<img width="550" height="600" alt="about" src="/ScreenShots/about.png" />
+<img alt="about" src="/ScreenShots/about.png" />
 
 ### Demo
 <DEMO.gif>
