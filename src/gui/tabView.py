@@ -3,7 +3,7 @@ from themes.themes import default_font
 from .generateTab import generateTabWidgets, passwordStrengthEvent
 from .generateTab import charSliderEvent, advanchedOption_func, genPass_func, copyPass_func, clearStatus_func, passwordStrengthEvent
 from .loginTab import loginTabWidgets, saveData, clearEntries, showMessage
-from .settingsTab import settingsTabWidget, setTheme_func
+from .settingsTab import settingsTabWidget, setTheme_func, setAppearanceMode_func
 from .savedTab import savedTabWidgets, addDataList, deleteEntry
 from .aboutTab import aboutTabWidgets
 # from utils.keyBindings import generateTabBinding
@@ -38,7 +38,9 @@ class TabView(ctk.CTkTabview):
     
     def passwordStrengthEvent(self, *args): passwordStrengthEvent(self, *args)
     
-    def setTheme_func(self, *args, **kwargs): setTheme_func(self, *args, **kwargs)
+    def setTheme_func(self, *args): setTheme_func(self, *args)
+
+    def setAppearanceMode_func(self, *args): setAppearanceMode_func(self, *args)
 
     def saveData(self): saveData(self)
 
@@ -51,23 +53,23 @@ class TabView(ctk.CTkTabview):
     def deleteEntry(self): deleteEntry(self)
 
 
-    def savedTabWidgets(self, master):
-        self.savedTabFrame = ctk.CTkFrame(master, border_color='black', border_width=3)
-        self.savedTabFrame.grid(row=0, column=0, padx=20, pady=20, sticky='ew')
+    # def savedTabWidgets(self, master):
+    #     self.savedTabFrame = ctk.CTkFrame(master, border_color='black', border_width=3)
+    #     self.savedTabFrame.grid(row=0, column=0, padx=20, pady=20, sticky='ew')
 
-        self.savedHeading = ctk.CTkLabel(self.savedTabFrame, text='Hello SavedTab', font=default_font)
-        self.savedHeading.grid(row=0, column=0, padx=20, pady=20, sticky='ew')
+    #     self.savedHeading = ctk.CTkLabel(self.savedTabFrame, text='Hello SavedTab', font=default_font)
+    #     self.savedHeading.grid(row=0, column=0, padx=20, pady=20, sticky='ew')
 
-    def aboutTabWidgets(self, master):
-        self.aboutTabFrame = ctk.CTkFrame(master, border_color='black', border_width=3)
-        self.aboutTabFrame.grid(row=0, column=0, padx=20, pady=20, sticky='ew')
+    # def aboutTabWidgets(self, master):
+    #     self.aboutTabFrame = ctk.CTkFrame(master, border_color='black', border_width=3)
+    #     self.aboutTabFrame.grid(row=0, column=0, padx=20, pady=20, sticky='ew')
 
-        self.aboutHeading = ctk.CTkLabel(self.aboutTabFrame, text='Hello AboutTab', font=default_font)
-        self.aboutHeading.grid(row=0, column=0, padx=20, pady=20, sticky='ew')
+    #     self.aboutHeading = ctk.CTkLabel(self.aboutTabFrame, text='Hello AboutTab', font=default_font)
+    #     self.aboutHeading.grid(row=0, column=0, padx=20, pady=20, sticky='ew')
 
-    def settingsTabWidgets(self, master):
-        self.settingsTabFrame = ctk.CTkFrame(master, border_color='black', border_width=3)
-        self.settingsTabFrame.grid(row=0, column=0, padx=20, pady=20, sticky='ew')
+    # def settingsTabWidgets(self, master):
+    #     self.settingsTabFrame = ctk.CTkFrame(master, border_color='black', border_width=3)
+    #     self.settingsTabFrame.grid(row=0, column=0, padx=20, pady=20, sticky='ew')
 
-        self.settingsHeading = ctk.CTkLabel(self.settingsTabFrame, text='Hello SettingsTab', font=default_font)
-        self.settingsHeading.grid(row=0, column=0, padx=20, pady=20, sticky='ew')
+    #     self.settingsHeading = ctk.CTkLabel(self.settingsTabFrame, text='Hello SettingsTab', font=default_font)
+    #     self.settingsHeading.grid(row=0, column=0, padx=20, pady=20, sticky='ew')

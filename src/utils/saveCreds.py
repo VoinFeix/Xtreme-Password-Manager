@@ -1,5 +1,6 @@
 import json
 from cryptography.fernet import Fernet
+import getpass
 
 class SaveCredentials:
     def __init__(self, file_path, key):
@@ -46,19 +47,25 @@ def addData(title=None, usernameOremail=None, password=None, twoFASecretKey=None
     return data
 
 def init():
-    key_filename = '.key.key'
-    filepath = '.creds.enc'
+    user = getpass.getuser()
+    key_file_dir = f'/home/{user}/.config/XPM/Configs/Default/'
+    filepath_dir = f'/home/{user}/.config/XPM/Configs/Default/'
+    key_filename = f'/home/{user}/.config/XPM/Configs/Default/.key.key'
+    filepath = f'/home/{user}/.config/XPM/Configs/Default/.creds.enc'
     import os
-    if not os.path.isfile(key_filename):
-        passkey = Fernet.generate_key()
-        with open(key_filename, 'wb') as f:
-            f.write(passkey)
+    try:
+        if not os.path.isfile(key_filename):
+            os.makedirs(key_file_dir, exist_ok=True)
+            passkey = Fernet.generate_key()
+            with open(key_filename, 'wb') as f:
+                f.write(passkey)
 
-    with open(key_filename, 'rb') as f:
-        key = f.read()
+        with open(key_filename, 'rb') as f:
+            key = f.read()
+        
+        return filepath, key
+    except Exception as e: print('Error at init function in saveCreds: ', str(e))
 
-
-    return filepath, key
 
 
 # filepath, key = init()

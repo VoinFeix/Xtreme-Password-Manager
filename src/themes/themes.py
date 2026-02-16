@@ -35,8 +35,8 @@ available_themes = {
 
 savedTabListBoxFont = ("Cascadia Code", 20)
 
-DEFAULT_APPEARANCE_MODE = 'dark'
-DEFAULT_THEME = available_themes['marsh']
+DEFAULT_APPEARANCE_MODE = 'Dark'
+DEFAULT_THEME = 'marsh'
 PADXY = 10
 
 timerLabelColors = {
@@ -44,3 +44,6 @@ timerLabelColors = {
     'Middle': 'yellow',
     'Low': 'red',
 }
+
+DEFAULT_THEME_FILENAME = '.theme.txt'
+DEFAULT_APPEARANCE_MODE_FILENAME = '.appearancemode.txt'

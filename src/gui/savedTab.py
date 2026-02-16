@@ -33,14 +33,15 @@ def plotData(*args):
     ShowLogins().show(data=data)
 
 def deleteEntry(self):
-    titleIdx = self.savedListBox.curselection()
-    title = list(sc.get().keys())[titleIdx]
+    try:
+        titleIdx = self.savedListBox.curselection()
+        title = list(sc.get().keys())[titleIdx]
 
-    choice = CTkMessagebox(self.savedTabFrame, message=f"Do you want to delete '{title}'\nYou can't restore it after deleted!!", icon='question', option_1='Yes', option_2='No')
-    
-    if choice.get() == 'Yes':        
-        sc.delete(title=title)
-        showMessage(self, msgtype='info', message=f"{title} deleted sucessfully")
-        self.addDataList()
-    else:
-        return
+        choice = CTkMessagebox(self.savedTabFrame, message=f"Do you want to delete '{title}'\nYou can't restore it after deleted!!", icon='question', option_1='Yes', option_2='No')
+        
+        if choice.get() == 'Yes':        
+            sc.delete(title=title)
+            showMessage(self, msgtype='info', message=f"{title} deleted sucessfully")
+            self.addDataList()
+        else: return
+    except: return
